@@ -5,8 +5,9 @@ const app = express();
 
 const morgan = require('morgan');
 
-const port = 3000;
-const host = '0.0.0.0';
+const config = require('config')
+const port = config.get('PORT') || 3000;
+const host = config.get('HOST') || '0.0.0.0';
 
 const grep_route = require('./routes/grep-route');
 const {load_grep_data} = require('./services/grep-data-service');
