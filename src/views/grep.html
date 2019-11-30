@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html dir="ltr" hascustombackground="false" bookmarkbarattached="false" lang="en" class="md">
+
+<head>
+    <meta charset="utf-8">
+    <title>GREP</title>
+    <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap&subset=vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <script type="text/javascript" src="/jquery.js"></script>
+</head>
+
+<body>
+    <div class="grep-container">
+        <div class="pattern-panel">
+            <div class="form-group">
+                <label for="pattern-input">Pattern:</label>
+                <textarea id="pattern-input" class="pattern-input" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="line-after-input">Line after:</label>
+                <input id="line-after-input" value="10" class="line-after-input"></textarea>
+            </div>
+        </div>
+        <div class="result-panel"></div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            function get_grep() {
+                $.ajax({
+                    url: '/grep',
+                    method: 'GET',
+                    data: {
+                        pattern: $('#pattern-input').val().trim(),
+                        line_after: $('#line-after-input').val(),
+                    },
+                    success: data => {
+                        $('.result-panel').html(data);
+                    }
+                });
+            }
+            $('.pattern-input').on('change', function(e) {
+                get_grep();
+            });
+            $('.line-after-input').on('change', function(e) {
+                get_grep();
+            });
+        });
+    </script>
+</body>
+
+</html>

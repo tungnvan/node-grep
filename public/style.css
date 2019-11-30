@@ -1,0 +1,45 @@
+html body {
+    margin: 0;
+}
+
+html body * {
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.grep-container {
+    padding: 1rem;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 20rem auto;
+    grid-gap: 1rem;
+}
+
+.grep-container .pattern-panel {
+    background-color: white;;
+}
+
+.grep-container .pattern-panel .pattern-input {
+    width: 100%;
+    resize: none;
+}
+
+.grep-container .pattern-panel .line-after-input {
+    width: 100%;
+}
+
+.grep-container .result-panel {
+    background-color: #eee;
+    font-family: 'Inconsolata';
+    padding: 1rem;
+    overflow-y: auto;
+    word-break: break-word;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #e91e63;
+}
